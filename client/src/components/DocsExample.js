@@ -7,7 +7,8 @@ import { cilCode, cilMediaPlay } from '@coreui/icons'
 const DocsExample = (props) => {
   const { children, href } = props
 
-  const _href = `https://spgaming2056.w3spaces.com`
+  // const _href = `https://spgaming2056.w3spaces.com`
+  const _href = href
 
   return (
     <div className="example">
