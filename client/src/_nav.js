@@ -2,7 +2,7 @@ import React from 'react'
 import CIcon from '@coreui/icons-react'
 import {
   // cilBell,
-  cilCalculator,
+  // cilCalculator,
   cilUser,
   cilBurger,
   // cilChartPie,
@@ -58,6 +58,11 @@ const _nav = [
       },
       {
         component: CNavItem,
+        name: 'ICE CREAM',
+        to: '/shop/icecream',
+      },
+      {
+        component: CNavItem,
         name: 'MENU',
         to: '/shop/menu',
       },
@@ -104,12 +109,12 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Widgets',
-    to: '/widgets',
-    icon: <CIcon icon={cilCalculator} customClassName="nav-icon" />,
+    name: 'CART',
+    to: '/cart',
+    icon: <CIcon icon={cilCart} customClassName="nav-icon" />,
     badge: {
       color: 'info',
-      text: 'NEW',
+      text: 'For notifications',
     },
   },
   {
