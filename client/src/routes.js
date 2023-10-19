@@ -4,11 +4,43 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const Home = React.lazy(() => import('./views/Home/home'))
 const Details = React.lazy(() => import('./views/staff/details'))
 
+//shop
+const Drink = React.lazy(() => import('./views/shop/drinks'))
+const Icecream = React.lazy(() => import('./views/shop/ice'))
+//fast food
+const Fastfood = React.lazy(() => import('./views/shop/fastf'))
 const routes = [
-  { path: '*', name: '', element: Home },
+  /**
+  |--------------------------------------------------|
+  |               DASHBOARD                          |
+  |--------------------------------------------------|
+  */
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+  /**
+  |--------------------------------------------------|
+  |                  HOME                            |
+  |--------------------------------------------------|
+  */
   { path: '/home', name: '', element: Home },
-  { path: '/staf/details', name: 'DETAILS', element: Details },
+  /**
+  |--------------------------------------------------|
+  |                 STAFF                            |
+  |--------------------------------------------------|
+  */
+  { path: '/staf/details', name: 'STAFF', element: Details },
+  /**
+  |--------------------------------------------------|
+  |                  SHOP                            |
+  |--------------------------------------------------|
+  */
+  { path: '/shop/drinks', name: 'DRINKS', element: Drink },
+  { path: '/shop/icecream', name: 'ICE CREAME DESERTS', element: Icecream },
+  /**
+  |--------------------------------------------------|
+  |  FAST FOOD                                       |
+  |--------------------------------------------------|
+  */
+  { path: '/fastfood', name: 'FASTFOOD', element: Fastfood },
 ]
 
 export default routes

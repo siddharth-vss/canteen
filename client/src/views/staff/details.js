@@ -3,12 +3,12 @@ import '../../scss/_custom.scss'
 
 const Details = () => {
   const food = [
-    {
-      img: 'https://pps.whatsapp.net/v/t61.24694-24/362648268_6490972597686164_7188434511326589666_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdSfSV-73-TOB8JO7gZdYJGuQKf4kd9mAf5n8-P4aforoA&oe=653B8443&_nc_sid=000000&_nc_cat=103',
-      id: 5,
-      name: 'GAURANG',
-      role: 'PROGRAMMER',
-    },
+    // {
+    //   img: 'https://pps.whatsapp.net/v/t61.24694-24/362648268_6490972597686164_7188434511326589666_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdSfSV-73-TOB8JO7gZdYJGuQKf4kd9mAf5n8-P4aforoA&oe=653B8443&_nc_sid=000000&_nc_cat=103',
+    //   id: 5,
+    //   name: 'GAURANG',
+    //   role: 'PROGRAMMER',
+    // },
     // {
     //   img: 'https://pps.whatsapp.net/v/t61.24694-24/366745129_1069892881088456_6827599022453445807_n.jpg?stp=dst-jpg_s96x96&ccb=11-4&oh=01_AdTIKEMcvVJHo4gPzKQqs3HK1AWN6JoTf3y0FVWZkG_BsA&oe=653B7046&_nc_sid=000000&_nc_cat=101',
     //   id: 6,
