@@ -6,13 +6,11 @@ dotenv.config();
 mongoose.connect(process.env.DB);
 
 let Meal = mongoose.Schema({
-
  name:String,
- Price:Number,
- Description: String,
- url: String,
- Category: {type : Array , default : []}
- 
+ price:Number,
+ description: String,
+ img: String,
+ category: {type : Array , default : []}
 });
 
 module.exports = mongoose.model('food',Meal);

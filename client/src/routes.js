@@ -7,6 +7,7 @@ const Details = React.lazy(() => import('./views/staff/details'))
 //shop
 const Drink = React.lazy(() => import('./views/shop/drinks'))
 const Icecream = React.lazy(() => import('./views/shop/ice'))
+const Menu = React.lazy(() => import('./views/shop/menu'))
 //fast food
 const Fastfood = React.lazy(() => import('./views/shop/fastf'))
 const routes = [
@@ -34,6 +35,7 @@ const routes = [
   |--------------------------------------------------|
   */
   { path: '/shop/drinks', name: 'DRINKS', element: Drink },
+  { path: '/shop/menu', name: 'DRINKS', element: Menu },
   { path: '/shop/icecream', name: 'ICE CREAME DESERTS', element: Icecream },
   /**
   |--------------------------------------------------|
