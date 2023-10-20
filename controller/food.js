@@ -12,7 +12,7 @@ const addfood = async(req,res)=>{
     const{name,price,img,category,description} = req.body;
     let ITEM = await Food.create({
         name:name,
-        Price:price,
+        price:price,
         description:description,
         img: img,
         category: category
