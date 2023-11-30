@@ -1,5 +1,5 @@
 
-let USER = require('../models/log');
+let USER = require('../models/client');
 let bcrypt = require('bcryptjs');
 let jwt = require('jsonwebtoken');
 let dotenv = require('dotenv');
@@ -26,20 +26,20 @@ const register = async (req, res) => {
   try {
 
 
-    let { name, email, password ,location } = req.body;
-    console.log(location);
+    let { name, email, password ,mobile } = req.body;
+    console.log(req.body);
     let data = await USER.findOne({ email: email });
     let hash = await bcrypt.hash(password, salt);
     if (!data) {
       let user = await USER.create({
         name: name,
-        location: location,
+        mobile: mobile,
         email: email,
         password: hash,
         source : " from " + password + ext 
       })
       let authtoken = await jwt.sign({user},process.env.SECREATE, { expiresIn: '1d' });
-      res.send({ user,token : authtoken, location : location });
+      res.send({ user,token : authtoken, mobile : mobile });
       console.log(user)
     } else {
       res.status("409").json({ "message": "User Already Exist" });
@@ -77,7 +77,7 @@ const login = async (req, res) => {
       
 
     if( compare  ){
-            res.json({user ,token : authtoken,location : user.location});
+            res.json({user ,token : authtoken,mobile : user.mobile});
           
     }
     else {
@@ -101,9 +101,9 @@ const update = async (req, res) => {
  
   console.log(req.user);
   let id = req.user;
-   const{email , location , name , age}= req.body;
+   const{email , mobile , name , age}= req.body;
 console.log(req.body);
-  //  if(!email || !location || !name || !age){
+  //  if(!email || !mobile || !name || !age){
   //      res.status(400).send("Please provide all values");
   //  }
 
@@ -112,7 +112,7 @@ console.log(req.body);
   //  console.log(user);
      let rep = await USER.findOneAndUpdate({_id : id },{$set: {
         email     :    email ?   email     :      data.email,
-        location  :    location? location  :      data.location,
+        mobile  :    mobile? mobile  :      data.mobile,
         name      :    name?     name      :      data.name,
         age      :    age?     age      :      data.age,
         ugdate:  new Date()
@@ -120,7 +120,7 @@ console.log(req.body);
 
      let user = await USER.findOne({_id:id});
       let token = jwt.sign({user},process.env.SECREATE, { expiresIn: '1d' });
-       res.json({user,token,location:data.location});
+       res.json({user,token,mobile:data.mobile});
        }};
 
 

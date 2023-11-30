@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   CButton,
   CCard,
@@ -12,9 +12,26 @@ import {
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import axios from 'axios'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 
 const Register = () => {
+  const [form, setForm] = useState({})
+
+  const fetch = async () => {
+    if (form.password === form.reppassword) {
+      let ret = await axios.post('http://localhost:5000/user/singup', form)
+      await console.log(ret.data)
+    }
+    alert('ENTER THE CURECT PASSWORD')
+  }
+
+  const handler = (e) => {
+    let name = e.target.name
+    let value = e.target.value
+    setForm({ ...form, [name]: value })
+  }
+
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -29,11 +46,23 @@ const Register = () => {
                     <CInputGroupText>
                       <CIcon icon={cilUser} />
                     </CInputGroupText>
-                    <CFormInput placeholder="Username" autoComplete="username" />
+                    <CFormInput
+                      placeholder="Username"
+                      autoComplete="username"
+                      name="username"
+                      value={form.username}
+                      onChange={handler}
+                    />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>@</CInputGroupText>
-                    <CFormInput placeholder="Email" autoComplete="email" />
+                    <CFormInput
+                      placeholder="Email"
+                      autoComplete="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handler}
+                    />
                   </CInputGroup>
                   <CInputGroup className="mb-3">
                     <CInputGroupText>
@@ -43,6 +72,9 @@ const Register = () => {
                       type="password"
                       placeholder="Password"
                       autoComplete="new-password"
+                      name="password"
+                      value={form.password}
+                      onChange={handler}
                     />
                   </CInputGroup>
                   <CInputGroup className="mb-4">
@@ -53,10 +85,15 @@ const Register = () => {
                       type="password"
                       placeholder="Repeat password"
                       autoComplete="new-password"
+                      name="reppassword"
+                      value={form.reppassword}
+                      onChange={handler}
                     />
                   </CInputGroup>
                   <div className="d-grid">
-                    <CButton color="success">Create Account</CButton>
+                    <CButton onClick={fetch} color="success">
+                      Create Account
+                    </CButton>
                   </div>
                 </CForm>
               </CCardBody>

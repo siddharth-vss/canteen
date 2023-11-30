@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import {
   CButton,
@@ -14,9 +14,23 @@ import {
   CRow,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import axios from 'axios'
 import { cilLockLocked, cilUser } from '@coreui/icons'
 
 const Login = () => {
+  const [form, setForm] = useState({})
+
+  const fetch = async () => {
+    let ret = await axios.post('http://localhost:5000/user/singin', form)
+    console.log(ret.data)
+  }
+
+  const handler = (e) => {
+    let name = e.target.name
+    let value = e.target.value
+    setForm({ ...form, [name]: value })
+  }
+
   return (
     <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
       <CContainer>
@@ -32,7 +46,13 @@ const Login = () => {
                       <CInputGroupText>
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
-                      <CFormInput placeholder="Username" autoComplete="username" />
+                      <CFormInput
+                        placeholder="Username"
+                        name="usernam"
+                        autoComplete="username"
+                        value={form.username}
+                        onChange={handler}
+                      />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupText>
@@ -42,11 +62,14 @@ const Login = () => {
                         type="password"
                         placeholder="Password"
                         autoComplete="current-password"
+                        name="password"
+                        value={form.password}
+                        onChange={handler}
                       />
                     </CInputGroup>
                     <CRow>
                       <CCol xs={6}>
-                        <CButton color="primary" className="px-4">
+                        <CButton color="primary" className="px-4" onClicke={fetch}>
                           Login
                         </CButton>
                       </CCol>
